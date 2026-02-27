@@ -1,30 +1,31 @@
-import java.util.*;
+package PalindromeChecker;
 
-public class PalindromeChecker {
-	public static void main(String[] args) {
-		System.out.println("Palindrome Checker v0.1.0");
+import java.util.Scanner;
 
-		Scanner sc = new Scanner(System.in);
+public class palindromeCheck{
 
-		System.out.print("Input text: ");
-		String str = sc.nextLine();
-
-		boolean result = true;
-
-		for (int i = 0; i <= str.length()/2; i++) {
-			if (str.charAt(i) != str.charAt(str.length()-1-i)) {
-				result = false;
-				break;
-			}
-		}
-
-		System.out.print("Is it a Palindrome? : ");
-		if (!result) {
-			System.out.println("false");
-		} else {
-			System.out.println("true");
-		}
-
-		sc.close();
-	}
+    public static boolean isPalindrome(String str){
+        char[] chars = str.toCharArray();
+        
+        int start = 0;
+        int end = chars.length - 1;
+        
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        System.out.println("Welcome to the Palindrome Checker Manager System!\nVersion 1.0\nSystem initialized successfully!\n");
+        String str = "racecar";
+        if(isPalindrome(str)){
+            System.out.println("The string \"" + str + "\" is a palindrome.");
+        } else {
+            System.out.println("The string \"" + str + "\" is not a palindrome.");
+        }
+    }
 }
