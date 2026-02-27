@@ -1,21 +1,25 @@
 package PalindromeChecker;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class palindromeCheck{
 
     public static boolean isPalindrome(String str){
+        // Convert string to char array
         char[] chars = str.toCharArray();
         
-        int start = 0;
-        int end = chars.length - 1;
+        // Create stack and push all characters
+        Stack<Character> stack = new Stack<>();
+        for (char c : chars) {
+            stack.push(c);
+        }
         
-        while (start < end) {
-            if (chars[start] != chars[end]) {
+        // Pop and compare with original characters
+        for (char c : chars) {
+            if (c != stack.pop()) {
                 return false;
             }
-            start++;
-            end--;
         }
         return true;
     }
